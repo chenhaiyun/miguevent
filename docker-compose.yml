@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  miguevent:
+    build: .
+    container_name: miguevent_app
+    ports:
+      - "8080:80"
+    environment:
+      - TZ=Asia/Shanghai
+      - PHP_MEMORY_LIMIT=256M
+      - PHP_MAX_EXECUTION_TIME=300
+    volumes:
+      # 挂载日志目录（持久化日志）
+      - ./logs:/var/www/html/logs
+      # 挂载缓存目录（持久化缓存）
+      - ./cache:/var/www/html/cache
+      # 可选：挂载配置文件，方便修改用户信息
+      - ./config:/var/www/html/config:ro
+    restart: unless-stopped
+    networks:
+      - miguevent_network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/migu.php"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  miguevent_network:
+    driver: bridge
+
+volumes:
+  miguevent_logs:
+  miguevent_cache:

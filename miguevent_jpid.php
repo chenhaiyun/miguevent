@@ -5,12 +5,15 @@ ini_set('log_errors', '0'); // 如果不想记录到日志也关闭
 
 date_default_timezone_set('Asia/Shanghai');
 
-// ========== 用户信息（固定写死防泄露） ==========
-// 默认写死的会员信息
-$defaultUserId    = "你的userId";
-$defaultUserToken = "你的userToken";
+// ========== 加载配置文件 ==========
+require_once __DIR__ . '/config/config.php';
 
-// 优先使用 URL 传参，如果没有则使用默认值
+// ========== 用户信息配置 ==========
+// 优先级：URL参数 > 环境配置文件 > 代码默认值
+$defaultUserId    = $envConfig['MIGU_USER_ID'] ?? "你的userId";
+$defaultUserToken = $envConfig['MIGU_USER_TOKEN'] ?? "你的userToken";
+
+// 优先使用 URL 传参，如果没有则使用配置文件或默认值
 $userId    = $_GET['userId'] ?? $defaultUserId;
 $userToken = $_GET['userToken'] ?? $defaultUserToken;
 $id        = $_GET['id'] ?? null;

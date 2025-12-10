@@ -1,0 +1,55 @@
+# Git相关
+.git
+.gitignore
+
+# Docker相关
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# 日志文件
+*.log
+logs/
+url_log.txt
+
+# 缓存文件
+cache/
+*.txt
+miguevent_id.txt
+miguevent_jpid.txt
+
+# 环境配置
+.env
+config/user.env
+
+# 文档和截图
+README.md
+*.md
+*.png
+*.jpg
+*.jpeg
+*.gif
+
+# IDE和编辑器
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 操作系统文件
+.DS_Store
+Thumbs.db
+
+# 临时文件
+tmp/
+temp/
+*.tmp
+
+# PHP相关
+vendor/
+composer.lock
+
+# 备份文件
+*.bak
+*.backup
