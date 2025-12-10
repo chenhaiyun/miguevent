@@ -1,2 +1,30 @@
+# 配置文件
+config/user.env
 user.env
-logs
+
+# 日志和缓存
+logs/
+cache/
+*.log
+*.txt
+url_log.txt
+miguevent_id.txt
+miguevent_jpid.txt
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# IDE文件
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 临时文件
+tmp/
+temp/
+*.tmp
+
+# 测试文件
+test_*.php
